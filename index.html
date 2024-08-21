@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9e522daaf4.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Lobster&family=Martian+Mono:wght@500&family=Righteous&family=Satisfy&family=Ubuntu:wght@500&display=swap"
+        rel="stylesheet">
+    <title>Sound - Web development</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        background-image: url(./bg3.jpg);
+        background-position: center;
+        background-size: cover;
+        /* background: #F9F6EE;
+        background: -webkit-linear-gradient(to left, #414345, #232526);
+        background: linear-gradient(to left, #414345, #232526); */
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .header {
+        position: relative;
+        background-color: #FBAB7E;
+        background-image: linear-gradient(63deg, #FBAB7E 0%, #F7CE68 100%);
+        box-shadow: inset 2px 2px 100px 100px crimson, inset -2px -2px 100px 100px blue;
+        height: 70px;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        animation: header 7s infinite ease-in-out;
+    }
+    @keyframes header {
+        0% {}
+
+        50% {
+
+            box-shadow: inset 2px 2px 100px 100px orange, inset -2px -2px 100px 100px greenyellow;
+        }
+        
+        100% {}
+    }
+
+    
+    .logo {
+        margin-right: auto;
+        margin-left: 20px;
+    }
+
+    .logo h1 {
+        font-family: 'Righteous', cursive;
+        color: red;
+        animation: logo 7s infinite ease-in-out;
+    }
+    
+    @keyframes logo {
+        0% {
+            color: #fff;
+            
+        }
+        
+        50% {
+            color:red;
+            
+        }
+        
+        100% {
+            color: #fff;
+
+        }
+    }
+
+    .logo h1 span {
+        color: white;
+    }
+    #toggle {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0px 10px rbga(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        margin-right: 10px;
+        transition: .5s ease-in-out;
+        cursor: pointer;
+    }
+
+    #toggle span {
+        position: absolute;
+        background-color: red;
+        width: 20px;
+        height: 4px;
+        border-radius: 6px;
+        transition: 0.5s;
+        left: 11.1px;
+    }
+
+    #toggle span:nth-child(1) {
+        transform: translateY(-8px);
+        width: 12px;
+        left: 11.6px;
+    }
+
+    #toggle span:nth-child(2) {
+        transform: translateY(8px);
+        width: 16px;
+        left: 11.6px;
+    }
+    #toggle.active{
+        width: 45px;
+    }
+    #toggle.active span:nth-child(3) {
+        transform: translateX(50px);
+    }
+
+    #toggle.active span:nth-child(2) {
+        transform: translateY(0px) rotate(315deg);
+        width: 21px;
+        transition-delay: 0.1s;
+    }
+
+    #toggle.active span:nth-child(1) {
+        transform: translateY(0px) rotate(45deg);
+        width: 21px;
+        transition-delay: 0.08s;
+    }
+
+    .navbar {
+        position: absolute;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        top: 70px;
+        width: 100%;
+        height: 50px;
+        background-color: white;
+        overflow: hidden;
+    }
+
+    .navbar ul {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .navbar ul li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        /* margin: 20px; */
+    }
+
+    .navbar ul li a {
+        text-decoration: none;
+        color: white;
+        padding: 16px;
+        /* border-left: 20px; */
+        background-color: red;
+    }
+
+    .navbar ul li a:hover {
+        background-color: white;
+        color: black;
+    }
+
+    .logo + .btn-login {
+        border: none;
+        margin-right: 10px;
+        border-radius: 50px;
+    }
+
+    .logo +.btn-login a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .song-wrap {
+        display: flex;
+    }
+
+    .song-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: whitesmoke;
+        border-radius: 20px;
+        padding: 30px 30px;
+        width: 400px;
+        margin-right: 20px;
+        box-shadow: inset 2px 2px 100px 100px red, inset -2px -2px 100px 100px blue;
+        animation: gola 12s infinite ease-in-out;
+        border: none;
+    }
+    
+    @keyframes gola {
+        0% {}
+
+        50% {
+
+            box-shadow: inset 2px 2px 100px 100px orange, inset -2px -2px 100px 100px greenyellow;
+        }
+        
+        100% {}
+    }
+
+    .song-container .s-logo img {
+        width: 300px;
+        border-radius: 20px;
+        margin-top: 20px;
+    }
+    
+    .play-pause-icon img {
+        width: 100px;
+    }
+    
+    .song-wrap {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 80px 30px;
+    }
+
+    .content-wrap {
+        gap: 15px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        height: 500px;
+    }
+
+    .content-1 {
+        height: auto;
+        padding: 30px;
+        margin-top: 5px;
+        width: 100%;
+        color: #000;
+        background-color: #FBAB7E;
+        background-image: linear-gradient(63deg, #FBAB7E 0%, #F7CE68 100%);
+        border-radius: 20px;
+        color: #fff;
+        font-family: 'Righteous', cursive; 
+    }
+    
+    .content-2 {
+        height: auto;
+        padding: 30px;
+        color: #000;
+        background-color: white;
+        border-radius: 20px;
+    }
+    .content-3{
+        height: auto;
+        padding: 30px;
+        color: #000;
+        background-color: white;
+        border-radius: 20px;
+    }
+    .content-3 .content-btn{
+        background-color: #FBAB7E;
+        background-image: linear-gradient(63deg, #FBAB7E 0%, #F7CE68 100%);
+        width: 80px;
+        border: none;
+        padding: 7px 1px;
+        color: #fff;
+        margin-top: 8px;
+        border-radius: 8px;
+        box-shadow: inset 2px 2px 100px 100px red, inset -2px -2px 100px 100px blue;
+        animation: button 6s infinite ease-in-out;
+    }
+    @keyframes button {
+        0% {}
+        
+        50% {
+            
+            box-shadow: inset 2px 2px 100px 100px orange, inset -2px -2px 100px 100px greenyellow;
+        }
+
+        100% {}
+    }
+    </style>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <h1>SOUND<span>.COM</span></h1>
+        </div>
+        <button class="btn-login">
+            <a href="#"><i class='fas fa-user-circle' style='font-size:36px'></i></a>
+        </button>
+        <div id="toggle" onclick="hamburger()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="navbar" id="nav">
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Playlist</a></li>
+                <li><a href="#">Album</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="song-wrap">
+        <div class="song-container" ">
+                <div class=" s-logo">
+            <img src="legend.jpeg" alt="">
+        </div>
+        <div class="play-pause-icon">
+            <img src="./play.png" id="icon" alt="">
+        </div>
+    </div>
+    <div class="content-wrap">
+        <div class="content-1 content">
+            <h1>LEGEND NEVER DIE</h1>
+        </div>
+        <div class="content-2 content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores similique atque placeat quisquam
+                facilis
+                ipsum veritatis, exercitationem adipisci. Fugit architecto, corporis enim veniam voluptatum dolorem
+                ullam
+                tempora maxime hic, officia pariatur in est! Tempora ex eum quibusdam optio, laboriosam sit explicabo
+                tempore quas veritatis magni culpa suscipit temporibus. Labore veniam sint tempora, facere autem
+                accusantium
+                aliquid itaque fugiat voluptate commodi expedita obcaecati porro voluptates excepturi, et doloremque
+                modi ut
+                nihil provident voluptas. Debitis, iusto. Quisquam optio quo reiciendis illum delectus accusamus
+                consequatur, autem id amet quidem, reprehenderit mollitia porro vitae esse aliquid, veniam asperiores
+                voluptatibus nam voluptas neque dicta tempora</p>
+        </div>
+        <div class="content-3 content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores similique atque placeat quisquam
+                facilis
+                ipsum veritatis, exercitationem adipisci. Fugit architecto, corporis enim veniam voluptatum dolorem
+                ullam
+                tempora maxime hic, officia pariatur in est! Tempora ex eum quibusdam optio, laboriosam sit explicabo
+                tempore quas veritatis magni culpa suscipit temporibus. Labore veniam sint tempora, facere autem
+                accusantium
+                </p>
+                <button class="content-btn">
+                   Read more
+                </button>
+        </div>
+    </div>
+    </div>
+
+    <!-- Audio file -->
+    <audio id="mysound">
+        <source src="./Legends Never Die (ft. Against The Current) ｜ Worlds 2017 - League of Legends.mp3"
+            type="audio/mp3">
+    </audio>
+    <!-- JavaScript -->
+    <script>
+        let icon = document.getElementById("icon");
+        let mysound = document.getElementById("mysound")
+        // icon.addEventListener("click", ()=>{
+        icon.addEventListener("click", () => {
+            console.log("Clicked")
+            if (mysound.paused) {
+                mysound.play();
+                icon.src = "./pause.png"
+            }
+            else {
+                mysound.pause();
+                icon.src = "./play.png"
+            }
+        });
+        
+        let menuToggle = document.getElementById('toggle');
+        let navbar = document.getElementById('nav');
+        function hamburger() {
+            console.log("hide/show")
+            menuToggle.classList.toggle('active');
+            if (navbar.style.display != 'none') {
+                navbar.style.display = 'none';
+            }
+            else {
+                navbar.style.display = 'block'
+            }
+        }
+
+    // menuToggle.classList.toggle('active');
+    </script>
+</body>
+
+</html>
